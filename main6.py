@@ -12,3 +12,17 @@ class InfoForm(FlaskForm):
     
     breed = StringField("What Breed are you?")
     submit = SubmitField('submit')
+
+
+@app.route('/', methods = ['GET', 'POST'])
+def index():
+    breed = False
+    form = InfoForm()
+    if form.validate_on_submit():
+        breed = form.breed.data
+        form.breed.data = ''
+    return render_template('index6.html', form=form, breed=breed)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
