@@ -1,14 +1,11 @@
 from base import db, Puppy, app
 
+# Ensure the context is pushed
 with app.app_context():
     # Create
-    puppy_name = 'Rufus'
-    existing_puppy = db.session.query(Puppy).filter_by(name=puppy_name).first()
-
-    if not existing_puppy:
-        my_puppy = Puppy(puppy_name, 5)
-        db.session.add(my_puppy)
-        db.session.commit()
+    my_puppy = Puppy('Rufus', 5)
+    db.session.add(my_puppy)
+    db.session.commit()
 
     # Read
     all_puppies = Puppy.query.all()
@@ -30,7 +27,7 @@ with app.app_context():
 
     # Delete
     second_pup = db.session.query(Puppy).get(2)
-    if second_pup:
+    if second_pup:  # Check if the puppy exists before deleting
         db.session.delete(second_pup)
         db.session.commit()
 
