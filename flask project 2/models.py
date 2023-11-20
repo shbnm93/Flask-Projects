@@ -31,10 +31,10 @@ class Puppy(db.Model):
         if self.owner:
             return f"Puppy name is {self.name} and owner is {self.owner.name}"
         else:
-            return f"Puppy name is {self.name} and has no owner assigned yet."
+            return f"Puppy name is {self.name} and has no owner assigned yet!"
 
     def report_toys(self):
-        print("Here are my toys!")
+        print("Here are my toys:")
         for toy in self.toys:
             print(toy.item_name)
         
