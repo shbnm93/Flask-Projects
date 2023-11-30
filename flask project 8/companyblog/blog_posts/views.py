@@ -39,7 +39,7 @@ def blog_post(blog_post_id):
 
 
 #update
-@blog_post.route('/<int:blog_post_id>/update', methods=['GET', 'POST'])
+@blog_posts.route('/<int:blog_post_id>/update', methods=['GET', 'POST'])
 @login_required
 def update(blog_post_id):
     blog_post = BlogPost.query.get_or_404(blog_post_id)
@@ -64,7 +64,7 @@ def update(blog_post_id):
 
 
 # DELETE
-@blog_post.route('/<int:blog_post_id/delete',methods=['GET','POST'])
+@blog_posts.route('/<int:blog_post_id>/delete',methods=['POST'])
 @login_required
 def delete_post(blog_post_id):
 
