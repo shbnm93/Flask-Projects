@@ -47,12 +47,14 @@ class PuppyNames(Resource):
         pup = Puppy(name=name)
         db.session.add(pup)
         db.session.commit()
-        return pup.json
+        return pup.json()
 
     def delete(self,name):
         pup = Puppy.query.filter_by(name=name).first()
         db.session.delete(pup)
         db.session.commit()
+
+        return {'note':'delete success'}
             
 class AllNames(Resource):
     # @jwt_required()
